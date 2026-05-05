@@ -16,7 +16,7 @@ export default function AlertsPanel({ trackingId }) {
     }
     setLoading(true);
     try {
-      await axios.post("http://localhost:8000/api/alerts/subscribe", {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/alerts/subscribe`, {
         tracking_id: trackingId,
         email: email || null,
         phone: phone || null,

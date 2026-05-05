@@ -121,7 +121,7 @@ export default function Track() {
     navigate(`/track/${id}`, { replace: true });
 
     try {
-      const { data } = await axios.get(`http://localhost:8000/api/track/${id}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/track/${id}`);
       setResult(data);
       const saved = JSON.parse(localStorage.getItem("trackmate_shipments") || "[]");
       const exists = saved.findIndex(s => s.tracking_id === data.tracking_id);

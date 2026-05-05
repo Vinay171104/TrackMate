@@ -21,7 +21,7 @@ export default function Navbar() {
     }
     setLoading(true);
     try {
-      await axios.post("http://localhost:8000/api/alerts/subscribe-global", { email });
+       await axios.post(`${import.meta.env.VITE_API_URL}/api/alerts/subscribe-global`, { email });
       toast.success("Subscribed! You'll get alerts for all your tracked shipments.");
       setEmail("");
       setAlertOpen(false);
