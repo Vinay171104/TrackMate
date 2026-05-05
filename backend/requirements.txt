@@ -10,3 +10,4 @@ pydantic==2.7.1
 twilio==9.1.0
 sendgrid==6.11.0
 python-multipart==0.0.9
+gunicorn==21.2.0
