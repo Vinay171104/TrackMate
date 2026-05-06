@@ -3,6 +3,7 @@ import { Bell, Mail, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import toast from "react-hot-toast";
+import API_URL from "../config";
 
 export default function AlertsPanel({ trackingId }) {
   const [email, setEmail]     = useState("");
@@ -16,7 +17,7 @@ export default function AlertsPanel({ trackingId }) {
     }
     setLoading(true);
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/alerts/subscribe`, {
+      await axios.post(`${API_URL}/api/alerts/subscribe`, {
         tracking_id: trackingId,
         email: email || null,
         phone: phone || null,

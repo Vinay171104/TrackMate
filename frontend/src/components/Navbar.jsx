@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import API_URL from "../config";
 
 export default function Navbar() {
   const loc = useLocation();
@@ -21,7 +22,7 @@ export default function Navbar() {
     }
     setLoading(true);
     try {
-       await axios.post(`${import.meta.env.VITE_API_URL}/api/alerts/subscribe-global`, { email });
+      await axios.post(`${API_URL}/api/alerts/subscribe-global`,  { email });
       toast.success("Subscribed! You'll get alerts for all your tracked shipments.");
       setEmail("");
       setAlertOpen(false);
