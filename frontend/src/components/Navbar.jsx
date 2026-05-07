@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import API_URL from "../config";
+const API_URL = import.meta.env.VITE_API_URL || "https://trackmate-production-c735.up.railway.app";
 
 export default function Navbar() {
   const loc = useLocation();

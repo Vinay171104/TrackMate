@@ -6,7 +6,7 @@ import { Loader2, AlertCircle, Search, Package, Clock, ChevronRight, X } from "l
 import toast from "react-hot-toast";
 import TrackingInput from "../components/TrackingInput";
 import TrackingResult from "../components/TrackingResult";
-import API_URL from "../config";
+const API_URL = import.meta.env.VITE_API_URL || "https://trackmate-production-c735.up.railway.app";
 
 const STATUS_COLORS = {
   delivered:    { bg: "rgba(74,222,128,0.1)",  border: "rgba(74,222,128,0.25)",  text: "#4ADE80" },

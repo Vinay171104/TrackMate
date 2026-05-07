@@ -3,7 +3,7 @@ import { Bell, Mail, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import toast from "react-hot-toast";
-import API_URL from "../config";
+const API_URL = import.meta.env.VITE_API_URL || "https://trackmate-production-c735.up.railway.app";
 
 export default function AlertsPanel({ trackingId }) {
   const [email, setEmail]     = useState("");
