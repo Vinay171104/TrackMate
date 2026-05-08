@@ -8,6 +8,13 @@
   VITE_API_URL = "https://trackmate-production-c735.up.railway.app"
 
 [[redirects]]
+  from = "/api/*"
+  to = "https://trackmate-production-c735.up.railway.app/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
