@@ -122,7 +122,9 @@ export default function Track() {
     navigate(`/track/${id}`, { replace: true });
 
     try {
-      const { data } = await axios.get(`${API_URL}/api/track/${id}`);
+      const cleanId = id.trim().toUpperCase();
+      console.log(`Attempting to track: ${cleanId} at ${API_URL}`);
+      const { data } = await axios.get(`${API_URL}/api/track/${cleanId}`);
       setResult(data);
       const saved = JSON.parse(localStorage.getItem("trackmate_shipments") || "[]");
       const exists = saved.findIndex(s => s.tracking_id === data.tracking_id);
@@ -133,6 +135,7 @@ export default function Track() {
       setHistory(updated);
       toast.success(`Found! Package is ${data.status.replace(/_/g, " ")}.`);
     } catch (err) {
+      console.error("Tracking Error:", err);
       const msg = err.response?.data?.detail || "Tracking info not found. Check the ID and try again.";
       setError(msg);
       toast.error(msg);
