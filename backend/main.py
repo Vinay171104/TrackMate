@@ -24,9 +24,18 @@ origins = [
     "http://localhost:3000",
 ]
 
-@app.middleware("http")
-async def add_cors_header(request, call_next):
-    response = await call_next(request)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.options("/{rest_of_path:path}")
+async def preflight_handler(rest_of_path: str):
+    from fastapi import Response
+    response = Response()
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Methods"] = "*"
     response.headers["Access-Control-Allow-Headers"] = "*"

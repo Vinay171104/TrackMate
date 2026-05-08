@@ -136,7 +136,12 @@ export default function Track() {
       toast.success(`Found! Package is ${data.status.replace(/_/g, " ")}.`);
     } catch (err) {
       console.error("Tracking Error:", err);
-      const msg = err.response?.data?.detail || "Tracking info not found. Check the ID and try again.";
+      let msg = "Tracking info not found. Check the ID and try again.";
+      if (!err.response) {
+        msg = "Connection error. The backend might be starting up or blocking the request (CORS). Please try again in 10 seconds.";
+      } else if (err.response.data?.detail) {
+        msg = err.response.data.detail;
+      }
       setError(msg);
       toast.error(msg);
     } finally {
