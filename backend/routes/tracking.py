@@ -73,6 +73,7 @@ async def track_package(
     courier: str = None,
     db: AsyncSession = Depends(get_db)
 ):
+    print(f"DEBUG: Tracking request for ID: {tracking_id}")
     cache_key = f"track:{tracking_id}:{courier or 'auto'}"
     cached = await cache_get(cache_key)
     if cached:
