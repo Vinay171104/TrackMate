@@ -5,7 +5,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  VITE_API_URL = "https://trackmate-production-c735.up.railway.app"
+
 
 [[redirects]]
   from = "/api/*"
